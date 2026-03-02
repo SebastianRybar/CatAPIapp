@@ -1,4 +1,4 @@
-﻿namespace CatAPIfetcher
+﻿﻿namespace CatAPIfetcher
 {
     public partial class MainPage : ContentPage
     {

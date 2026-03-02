@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CatAPIfetcher.Views.CatsPage"
+             Title="Cat Images">
+
+    <Grid RowDefinitions="Auto,*" Padding="20">
+
+        <Button 
+            Grid.Row="0"
+            Text="Load Cats"
+            Clicked="OnLoadCatsClicked"
+            Margin="0,0,0,20"/>
+
+        <CollectionView 
+            Grid.Row="1"
+            x:Name="CatsCollectionView"
+            SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="10" Padding="0" HasShadow="True">
+                        <Image 
+                            Source="{Binding Url}"
+                            Aspect="AspectFill"
+                            HeightRequest="300"/>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+
+</ContentPage>
