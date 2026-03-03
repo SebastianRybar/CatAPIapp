@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CatAPIfetcher.Views.CatsListPage"
+             Title="Cats">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+" Clicked="OnAddCatClicked"/>
+        <ToolbarItem Text="Refresh" Clicked="OnRefreshClicked"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="*,Auto">
+
+        <CollectionView 
+            Grid.Row="0"
+            x:Name="CatsCollectionView"
+            SelectionMode="Single"
+            SelectionChanged="OnCatSelected">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.EmptyView>
+                <StackLayout Padding="20" VerticalOptions="Center">
+                    <Label Text="No cats yet!" 
+                           FontSize="20" 
+                           HorizontalOptions="Center"
+                           TextColor="Gray"/>
+                    <Label Text="Tap Refresh to load from API" 
+                           FontSize="14" 
+                           HorizontalOptions="Center"
+                           TextColor="Gray"/>
+                </StackLayout>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10,5" ColumnDefinitions="100,*" RowDefinitions="Auto,Auto">
+                        <Frame Grid.Column="0" Grid.RowSpan="2" 
+                               CornerRadius="10" 
+                               Padding="0" 
+                               HasShadow="True"
+                               HeightRequest="100"
+                               WidthRequest="100">
+                            <Image 
+                                Source="{Binding Url}"
+                                Aspect="AspectFill"/>
+                        </Frame>
+
+                        <Label Grid.Column="1" Grid.Row="0"
+                               Text="{Binding DisplayName}"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               VerticalOptions="End"
+                               Margin="10,0,0,0"/>
+
+                        <Label Grid.Column="1" Grid.Row="1"
+                               Text="{Binding IsLocalOnly, StringFormat='Local: {0}'}"
+                               FontSize="12"
+                               TextColor="Gray"
+                               VerticalOptions="Start"
+                               Margin="10,0,0,0"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <ActivityIndicator 
+            Grid.Row="0"
+            x:Name="LoadingIndicator"
+            IsRunning="False"
+            IsVisible="False"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+
+    </Grid>
+
+</ContentPage>
