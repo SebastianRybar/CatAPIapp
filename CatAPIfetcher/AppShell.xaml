@@ -3,12 +3,12 @@
     x:Class="CatAPIfetcher.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:CatAPIfetcher"
+    xmlns:local="clr-namespace:CatAPIfetcher.Views"
     Title="CatAPIfetcher">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Cats"
+        ContentTemplate="{DataTemplate local:CatsListPage}"
+        Route="CatsListPage" />
 
 </Shell>

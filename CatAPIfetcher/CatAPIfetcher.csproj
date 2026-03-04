@@ -67,13 +67,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="AddCatPage.xaml.cs">
+	  <Compile Update="Views\AddCatPage.xaml.cs">
 	    <DependentUpon>AddCatPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="CatDetailPage.xaml.cs">
+	  <Compile Update="Views\CatDetailPage.xaml.cs">
 	    <DependentUpon>CatDetailPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="CatsListPage.xaml.cs">
+	  <Compile Update="Views\CatsListPage.xaml.cs">
 	    <DependentUpon>CatsListPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="MainPage.xaml.cs">
@@ -82,13 +82,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="AddCatPage.xaml">
+	  <MauiXaml Update="Views\AddCatPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="CatDetailPage.xaml">
+	  <MauiXaml Update="Views\CatDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="CatsListPage.xaml">
+	  <MauiXaml Update="Views\CatsListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\CatsPage.xaml">
