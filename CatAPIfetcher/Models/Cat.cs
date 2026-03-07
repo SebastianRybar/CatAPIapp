@@ -21,6 +21,9 @@ namespace CatAPIfetcher.Model
 
         public string Name { get; set; }
         public string Description { get; set; }
+        public string Origin { get; set; }
+        public string Temperament { get; set; }
+        public string LifeSpan { get; set; }
         public bool IsLocalOnly { get; set; }
         public DateTime CreatedAt { get; set; }
 
@@ -31,6 +34,6 @@ namespace CatAPIfetcher.Model
         [Ignore]
         public string DisplayName => !string.IsNullOrEmpty(Name)
             ? Name
-            : (Breeds?.FirstOrDefault()?.Name ?? "Unknown Cat");
+            : "Unknown Cat";
     }
 }
