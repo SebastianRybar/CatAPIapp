@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CatAPIfetcher.Views.CatsListPage"
-             Title="Cats">
+             Title="Cats"
+             BackgroundColor="AliceBlue">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="+" Clicked="OnAddCatClicked"/>
@@ -24,42 +25,51 @@
                     <Label Text="No cats yet!" 
                            FontSize="20" 
                            HorizontalOptions="Center"
-                           TextColor="Gray"/>
+                           TextColor="#4682B4"/>
                     <Label Text="Tap Refresh to load from API" 
                            FontSize="14" 
                            HorizontalOptions="Center"
-                           TextColor="Gray"/>
+                           TextColor="#4682B4"/>
                 </StackLayout>
             </CollectionView.EmptyView>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="10,5" ColumnDefinitions="100,*" RowDefinitions="Auto,Auto">
-                        <Frame Grid.Column="0" Grid.RowSpan="2" 
-                               CornerRadius="10" 
-                               Padding="2" 
-                               HasShadow="True"
-                               HeightRequest="100"
-                               WidthRequest="100">
-                            <Image 
-                                Source="{Binding Url}"
-                                Aspect="AspectFit"
-                                BackgroundColor="White"/>
-                        </Frame>
+                    <Frame CornerRadius="12" 
+                           Padding="0" 
+                           HasShadow="False" 
+                           BackgroundColor="White"
+                           BorderColor="Transparent"
+                           Margin="10,5">
+                        <Grid Padding="10" ColumnDefinitions="100,*" RowDefinitions="Auto,Auto">
+                            <Frame Grid.Column="0" Grid.RowSpan="2" 
+                                   CornerRadius="10" 
+                                   Padding="2" 
+                                   HasShadow="False"
+                                   BackgroundColor="#E6F2FF"
+                                   BorderColor="Transparent"
+                                   HeightRequest="100"
+                                   WidthRequest="100">
+                                <Image 
+                                    Source="{Binding Url}"
+                                    Aspect="AspectFit"/>
+                            </Frame>
 
-                        <Label Grid.Column="1" Grid.Row="0"
-                               Text="{Binding DisplayName}"
-                               FontSize="18"
-                               FontAttributes="Bold"
-                               VerticalOptions="End"
-                               Margin="10,0,0,0"/>
+                            <Label Grid.Column="1" Grid.Row="0"
+                                   Text="{Binding DisplayName}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#2C3E50"
+                                   VerticalOptions="End"
+                                   Margin="10,0,0,0"/>
 
-                        <Label Grid.Column="1" Grid.Row="1"
-                               Text="{Binding IsLocalOnly, StringFormat='Local: {0}'}"
-                               FontSize="12"
-                               TextColor="Gray"
-                               VerticalOptions="Start"
-                               Margin="10,0,0,0"/>
-                    </Grid>
+                            <Label Grid.Column="1" Grid.Row="1"
+                                   Text="{Binding IsLocalOnly, StringFormat='Local: {0}'}"
+                                   FontSize="12"
+                                   TextColor="#4682B4"
+                                   VerticalOptions="Start"
+                                   Margin="10,0,0,0"/>
+                        </Grid>
+                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
@@ -69,6 +79,7 @@
             x:Name="LoadingIndicator"
             IsRunning="False"
             IsVisible="False"
+            Color="#4682B4"
             VerticalOptions="Center"
             HorizontalOptions="Center"/>
 

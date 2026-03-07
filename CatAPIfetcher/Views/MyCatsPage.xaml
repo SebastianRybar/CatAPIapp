@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CatAPIfetcher.Views.MyCatsPage"
              Title="My Cats"
-             BackgroundColor="#F5F5F5">
+             BackgroundColor="AliceBlue">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="+" Clicked="OnAddCatClicked"/>
@@ -33,7 +33,7 @@
                     <Label Text="Tap + to add your first cat" 
                            FontSize="16" 
                            HorizontalOptions="Center"
-                           TextColor="#7F8C8D"
+                           TextColor="#8B7355"
                            Margin="0,10,0,0"/>
                 </StackLayout>
             </CollectionView.EmptyView>
@@ -56,7 +56,7 @@
                                    CornerRadius="12" 
                                    Padding="3" 
                                    HasShadow="False"
-                                   BackgroundColor="#F5F5F5"
+                                   BackgroundColor="#FFF8F0"
                                    BorderColor="Transparent"
                                    HeightRequest="120"
                                    WidthRequest="120">
@@ -81,7 +81,7 @@
                                    Grid.Row="1"
                                    Text="{Binding CreatedAt, StringFormat='Added: {0:dd/MM/yyyy HH:mm}'}"
                                    FontSize="12"
-                                   TextColor="#7F8C8D"
+                                   TextColor="#8B7355"
                                    VerticalOptions="Start">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnCatTapped" CommandParameter="{Binding}"/>
@@ -126,7 +126,7 @@
             x:Name="LoadingIndicator"
             IsRunning="False"
             IsVisible="False"
-            Color="#3498DB"
+            Color="#8B7355"
             VerticalOptions="Center"
             HorizontalOptions="Center"/>
 

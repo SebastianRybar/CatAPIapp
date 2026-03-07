@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CatAPIfetcher.Views.SettingsPage"
              Title="Settings"
-             BackgroundColor="#F5F5F5">
+             BackgroundColor="AliceBlue">
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
 
@@ -27,7 +27,7 @@
                                TextColor="#34495E"/>
                         <Label Text="When enabled, locally added cats will appear in the main Cats list" 
                                FontSize="12" 
-                               TextColor="#7F8C8D"
+                               TextColor="#8B7355"
                                LineBreakMode="WordWrap"/>
                     </VerticalStackLayout>
                     <Switch Grid.Column="1" 
@@ -51,7 +51,7 @@
                            TextColor="#34495E"/>
 
                     <BoxView HeightRequest="1" 
-                             BackgroundColor="#ECF0F1"
+                             BackgroundColor="#E0D5C7"
                              Margin="0,0,0,10"/>
 
                     <Label Text="Number of cats to generate:" 
@@ -72,7 +72,7 @@
                         <Frame CornerRadius="10" 
                                Padding="15,10" 
                                HasShadow="False"
-                               BackgroundColor="#ECF0F1"
+                               BackgroundColor="#FFF8F0"
                                BorderColor="Transparent">
                             <Label x:Name="CountLabel"
                                    Text="10"
@@ -95,7 +95,7 @@
 
                     <Label Text="Range: 1-50 cats" 
                            FontSize="12" 
-                           TextColor="#7F8C8D"
+                           TextColor="#8B7355"
                            HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Frame>
