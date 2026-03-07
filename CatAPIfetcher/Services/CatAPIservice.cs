@@ -24,7 +24,8 @@ namespace CatAPIfetcher.Services
         {
             try
             {
-                var url = $"{BaseUrl}/images/search?limit={limit}&has_breeds=1";
+                var randomSeed = Guid.NewGuid().ToString();
+                var url = $"{BaseUrl}/images/search?limit={limit}&has_breeds=1&order=RANDOM&seed={randomSeed}";
                 Debug.WriteLine($"Fetching cats from: {url}");
 
                 var response = await _httpClient.GetAsync(url);

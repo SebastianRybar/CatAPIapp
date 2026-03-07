@@ -6,9 +6,21 @@
     xmlns:local="clr-namespace:CatAPIfetcher.Views"
     Title="CatAPIfetcher">
 
-    <ShellContent
-        Title="Cats"
-        ContentTemplate="{DataTemplate local:CatsListPage}"
-        Route="CatsListPage" />
+    <TabBar>
+        <ShellContent
+            Title="Cats"
+            ContentTemplate="{DataTemplate local:CatsListPage}"
+            Route="CatsListPage" />
+
+        <ShellContent
+            Title="My Cats"
+            ContentTemplate="{DataTemplate local:MyCatsPage}"
+            Route="MyCatsPage" />
+
+        <ShellContent
+            Title="Settings"
+            ContentTemplate="{DataTemplate local:SettingsPage}"
+            Route="SettingsPage" />
+    </TabBar>
 
 </Shell>

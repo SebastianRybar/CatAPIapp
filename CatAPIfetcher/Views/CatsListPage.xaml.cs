@@ -9,6 +9,7 @@ namespace CatAPIfetcher.Views
         private readonly CatAPIservice _catApiService;
         private readonly DatabaseService _databaseService;
         private bool _isFirstLoad = true;
+        private const string ShowLocalCatsKey = "ShowLocalCats";
 
         public CatsListPage(CatAPIservice catApiService, DatabaseService databaseService)
         {
@@ -45,8 +46,11 @@ namespace CatAPIfetcher.Views
 
             try
             {
-                Debug.WriteLine("Starting to fetch 5 cats from API...");
-                var cats = await _catApiService.GetRandomCatsAsync(5);
+                Debug.WriteLine("Starting to fetch 10 cats from API...");
+
+                await _databaseService.ClearAllCatsAsync();
+
+                var cats = await _catApiService.GetRandomCatsAsync(10);
                 Debug.WriteLine($"Successfully fetched {cats.Count} cats");
 
                 await _databaseService.SaveCatsAsync(cats);
@@ -73,9 +77,23 @@ namespace CatAPIfetcher.Views
 
         private async Task LoadCatsFromDatabaseAsync()
         {
-            var cats = await _databaseService.GetCatsAsync();
-            Debug.WriteLine($"Loading {cats?.Count ?? 0} cats from database to UI");
-            CatsCollectionView.ItemsSource = cats;
+            var allCats = await _databaseService.GetCatsAsync();
+
+            bool showLocalCats = Preferences.Get(ShowLocalCatsKey, true);
+
+            List<Cat> catsToDisplay;
+            if (showLocalCats)
+            {
+                catsToDisplay = allCats;
+                Debug.WriteLine($"Loading {catsToDisplay.Count} cats (including local)");
+            }
+            else
+            {
+                catsToDisplay = allCats.Where(c => !c.IsLocalOnly).ToList();
+                Debug.WriteLine($"Loading {catsToDisplay.Count} cats (API only, {allCats.Count(c => c.IsLocalOnly)} local cats hidden)");
+            }
+
+            CatsCollectionView.ItemsSource = catsToDisplay;
         }
 
         private async void OnRefreshClicked(object sender, EventArgs e)

@@ -22,8 +22,10 @@ namespace CatAPIfetcher
             builder.Services.AddSingleton<DatabaseService>();
 
             builder.Services.AddTransient<CatsListPage>();
+            builder.Services.AddTransient<MyCatsPage>();
             builder.Services.AddTransient<CatDetailPage>();
             builder.Services.AddTransient<AddCatPage>();
+            builder.Services.AddTransient<SettingsPage>();
 
 #if DEBUG
             builder.Logging.AddDebug();

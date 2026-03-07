@@ -36,13 +36,14 @@
                     <Grid Padding="10,5" ColumnDefinitions="100,*" RowDefinitions="Auto,Auto">
                         <Frame Grid.Column="0" Grid.RowSpan="2" 
                                CornerRadius="10" 
-                               Padding="0" 
+                               Padding="2" 
                                HasShadow="True"
                                HeightRequest="100"
                                WidthRequest="100">
                             <Image 
                                 Source="{Binding Url}"
-                                Aspect="AspectFill"/>
+                                Aspect="AspectFit"
+                                BackgroundColor="White"/>
                         </Frame>
 
                         <Label Grid.Column="1" Grid.Row="0"
