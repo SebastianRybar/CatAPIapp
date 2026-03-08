@@ -6,7 +6,7 @@
              BackgroundColor="AliceBlue">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+" Clicked="OnAddCatClicked"/>
+        <ToolbarItem Text="➕" Clicked="OnAddCatClicked"/>
     </ContentPage.ToolbarItems>
 
     <Grid RowDefinitions="*,Auto">
