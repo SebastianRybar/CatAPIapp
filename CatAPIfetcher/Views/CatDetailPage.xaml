@@ -173,6 +173,15 @@
                            LineBreakMode="WordWrap"/>
                 </VerticalStackLayout>
             </Frame>
+            <Frame> 
+                <Button Text="🔙 Back" 
+                        Clicked="OnBackButtonClicked"
+                        BackgroundColor="#3498DB" 
+                        TextColor="White" 
+                        FontAttributes="Bold" 
+                        CornerRadius="8" 
+                        HeightRequest="50"/>
+            </Frame>
 
             <BoxView HeightRequest="20" Color="Transparent"/>
 

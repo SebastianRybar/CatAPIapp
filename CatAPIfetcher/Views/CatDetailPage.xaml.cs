@@ -52,5 +52,9 @@ namespace CatAPIfetcher.Views
                     : cat.Description;
             }
         }
+        private async void OnBackButtonClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("..");
+        }
     }
 }
