@@ -6,73 +6,203 @@
              BackgroundColor="AliceBlue">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+" Clicked="OnAddCatClicked"/>
-        <ToolbarItem Text="Refresh" Clicked="OnRefreshClicked"/>
+        <ToolbarItem Text="➕" Clicked="OnAddCatClicked"/>
+        <ToolbarItem Text="🔄" Clicked="OnRefreshClicked"/>
     </ContentPage.ToolbarItems>
 
     <Grid RowDefinitions="*,Auto">
 
-        <CollectionView 
-            Grid.Row="0"
-            x:Name="CatsCollectionView"
-            SelectionMode="Single"
-            SelectionChanged="OnCatSelected">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-            </CollectionView.ItemsLayout>
-            <CollectionView.EmptyView>
-                <StackLayout Padding="20" VerticalOptions="Center">
-                    <Label Text="No cats yet!" 
-                           FontSize="20" 
-                           HorizontalOptions="Center"
-                           TextColor="#4682B4"/>
-                    <Label Text="Tap Refresh to load from API" 
-                           FontSize="14" 
-                           HorizontalOptions="Center"
-                           TextColor="#4682B4"/>
-                </StackLayout>
-            </CollectionView.EmptyView>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame CornerRadius="12" 
-                           Padding="0" 
-                           HasShadow="False" 
-                           BackgroundColor="White"
-                           BorderColor="Transparent"
-                           Margin="10,5">
-                        <Grid Padding="10" ColumnDefinitions="100,*" RowDefinitions="Auto,Auto">
-                            <Frame Grid.Column="0" Grid.RowSpan="2" 
-                                   CornerRadius="10" 
-                                   Padding="2" 
-                                   HasShadow="False"
-                                   BackgroundColor="#E6F2FF"
-                                   BorderColor="Transparent"
-                                   HeightRequest="100"
-                                   WidthRequest="100">
-                                <Image 
-                                    Source="{Binding Url}"
-                                    Aspect="AspectFit"/>
-                            </Frame>
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout x:Name="CatsContainer" 
+                                Padding="0,10,0,0" 
+                                Spacing="12"
+                                HorizontalOptions="Fill">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Mobile">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="0" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Property="MaximumWidthRequest" Value="600" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Tablet">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="600" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Property="MaximumWidthRequest" Value="900" />
+                                <Setter Property="HorizontalOptions" Value="Center" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Desktop">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="900" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Property="MaximumWidthRequest" Value="1200" />
+                                <Setter Property="HorizontalOptions" Value="Center" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
 
-                            <Label Grid.Column="1" Grid.Row="0"
-                                   Text="{Binding DisplayName}"
-                                   FontSize="18"
+                <CollectionView 
+                    x:Name="CatsCollectionView"
+                    SelectionMode="Single"
+                    SelectionChanged="OnCatSelected">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="12"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.EmptyView>
+                        <StackLayout Padding="20" VerticalOptions="Center">
+                            <Label Text="🐱" 
+                                   FontSize="60" 
+                                   HorizontalOptions="Center"
+                                   Margin="0,0,0,15"/>
+                            <Label Text="No cats yet!" 
+                                   FontSize="20" 
                                    FontAttributes="Bold"
-                                   TextColor="#2C3E50"
-                                   VerticalOptions="End"
-                                   Margin="10,0,0,0"/>
-
-                            <Label Grid.Column="1" Grid.Row="1"
-                                   Text="{Binding IsLocalOnly, StringFormat='Local: {0}'}"
-                                   FontSize="12"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="#34495E"/>
+                            <Label Text="Tap 🔄 to load from API" 
+                                   FontSize="14" 
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"
                                    TextColor="#4682B4"
-                                   VerticalOptions="Start"
-                                   Margin="10,0,0,0"/>
-                        </Grid>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                                   Margin="0,8,0,0"/>
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="12" 
+                                   Padding="12" 
+                                   HasShadow="False" 
+                                   BackgroundColor="White"
+                                   BorderColor="Transparent"
+                                   Margin="10,0,10,0"
+                                   HorizontalOptions="Fill">
+                                <Grid x:Name="CatItemGrid" RowSpacing="8">
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Mobile">
+                                                <VisualState.StateTriggers>
+                                                    <AdaptiveTrigger MinWindowWidth="0" />
+                                                </VisualState.StateTriggers>
+                                                <VisualState.Setters>
+                                                    <Setter Property="ColumnDefinitions" Value="*" />
+                                                    <Setter Property="RowDefinitions" Value="Auto,Auto,Auto" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="Wide">
+                                                <VisualState.StateTriggers>
+                                                    <AdaptiveTrigger MinWindowWidth="600" />
+                                                </VisualState.StateTriggers>
+                                                <VisualState.Setters>
+                                                    <Setter Property="ColumnDefinitions" Value="200,*" />
+                                                    <Setter Property="RowDefinitions" Value="Auto,Auto" />
+                                                    <Setter Property="ColumnSpacing" Value="15" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+
+                                    <Frame x:Name="ImageFrame"
+                                           CornerRadius="10" 
+                                           Padding="10" 
+                                           HasShadow="False"
+                                           BackgroundColor="Transparent"
+                                           BorderColor="Transparent"
+                                           HorizontalOptions="Fill">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Mobile">
+                                                    <VisualState.StateTriggers>
+                                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                                    </VisualState.StateTriggers>
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Grid.Column" Value="0" />
+                                                        <Setter Property="Grid.Row" Value="0" />
+                                                        <Setter Property="HeightRequest" Value="270" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="Wide">
+                                                    <VisualState.StateTriggers>
+                                                        <AdaptiveTrigger MinWindowWidth="600" />
+                                                    </VisualState.StateTriggers>
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Grid.Column" Value="0" />
+                                                        <Setter Property="Grid.Row" Value="0" />
+                                                        <Setter Property="Grid.RowSpan" Value="2" />
+                                                        <Setter Property="HeightRequest" Value="220" />
+                                                        <Setter Property="WidthRequest" Value="220" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <Image 
+                                            Source="{Binding Url}"
+                                            Aspect="AspectFit"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"/>
+                                    </Frame>
+
+                                    <VerticalStackLayout x:Name="InfoStack" Spacing="8">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Mobile">
+                                                    <VisualState.StateTriggers>
+                                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                                    </VisualState.StateTriggers>
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Grid.Column" Value="0" />
+                                                        <Setter Property="Grid.Row" Value="1" />
+                                                        <Setter Property="HorizontalOptions" Value="Center" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="Wide">
+                                                    <VisualState.StateTriggers>
+                                                        <AdaptiveTrigger MinWindowWidth="600" />
+                                                    </VisualState.StateTriggers>
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Grid.Column" Value="1" />
+                                                        <Setter Property="Grid.Row" Value="0" />
+                                                        <Setter Property="HorizontalOptions" Value="Start" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+
+                                        <Label Text="{Binding DisplayName}"
+                                               FontSize="18"
+                                               FontAttributes="Bold"
+                                               TextColor="#2C3E50"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="TailTruncation"/>
+
+                                        <Frame CornerRadius="6"
+                                               Padding="8,4"
+                                               HasShadow="False"
+                                               BackgroundColor="#27AE60"
+                                               BorderColor="Transparent"
+                                               HorizontalOptions="Center"
+                                               IsVisible="{Binding IsLocalOnly}">
+                                            <Label Text="💾 Local"
+                                                   FontSize="10"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"/>
+                                        </Frame>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
 
         <ActivityIndicator 
             Grid.Row="0"

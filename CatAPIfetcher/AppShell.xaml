@@ -4,7 +4,26 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:CatAPIfetcher.Views"
-    Title="CatAPIfetcher">
+    Title="CatAPIfetcher"
+    Shell.TabBarBackgroundColor="White"
+    Shell.TabBarForegroundColor="#4682B4"
+    Shell.TabBarUnselectedColor="#95A5A6"
+    Shell.TabBarTitleColor="#2C3E50">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#4682B4</Color>
+            <Color x:Key="Secondary">#95A5A6</Color>
+            <Color x:Key="Accent">#2C3E50</Color>
+
+            <Style TargetType="TabBar" ApplyToDerivedTypes="True">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource Primary}"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource Accent}"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource Secondary}"/>
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
 
     <TabBar>
         <ShellContent

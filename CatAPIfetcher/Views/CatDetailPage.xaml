@@ -28,7 +28,7 @@
                        FontSize="32"
                        FontAttributes="Bold"
                        HorizontalOptions="Center"
-                       TextColor="#2C3E50"/>
+                       TextColor="Black"/>
             </Frame>
 
             <Frame CornerRadius="15" 
@@ -45,12 +45,12 @@
                            Text="🆔 ID:" 
                            FontAttributes="Bold"
                            FontSize="14"
-                           TextColor="#34495E"
+                           TextColor="Black"
                            VerticalOptions="Start"/>
                     <Label Grid.Row="0" Grid.Column="1" 
                            x:Name="IdLabel" 
                            FontSize="14"
-                           TextColor="#8B7355"
+                           TextColor="Black"
                            VerticalOptions="Start"
                            LineBreakMode="WordWrap"/>
 
@@ -58,36 +58,36 @@
                            Text="🐱 Breed:" 
                            FontAttributes="Bold"
                            FontSize="14"
-                           TextColor="#34495E"
+                           TextColor="Black"
                            VerticalOptions="Start"/>
                     <Label Grid.Row="1" Grid.Column="1" 
                            x:Name="BreedLabel" 
                            FontSize="14"
-                           TextColor="#8B7355"
+                           TextColor="Black"
                            VerticalOptions="Start"/>
 
                     <Label Grid.Row="2" Grid.Column="0" 
                            Text="🌍 Origin:" 
                            FontAttributes="Bold"
                            FontSize="14"
-                           TextColor="#34495E"
+                           TextColor="Black"
                            VerticalOptions="Start"/>
                     <Label Grid.Row="2" Grid.Column="1" 
                            x:Name="OriginLabel" 
                            FontSize="14"
-                           TextColor="#8B7355"
+                           TextColor="Black"
                            VerticalOptions="Start"/>
 
                     <Label Grid.Row="3" Grid.Column="0" 
                            Text="😺 Temperament:" 
                            FontAttributes="Bold"
                            FontSize="14"
-                           TextColor="#34495E"
+                           TextColor="Black"
                            VerticalOptions="Start"/>
                     <Label Grid.Row="3" Grid.Column="1" 
                            x:Name="TemperamentLabel" 
                            FontSize="14"
-                           TextColor="#8B7355"
+                           TextColor="Black"
                            VerticalOptions="Start" 
                            LineBreakMode="WordWrap"/>
 
@@ -95,60 +95,60 @@
                            Text="⏳ Life Span:" 
                            FontAttributes="Bold"
                            FontSize="14"
-                           TextColor="#34495E"
+                           TextColor="Black"
                            VerticalOptions="Start"/>
                     <Label Grid.Row="4" Grid.Column="1" 
                            x:Name="LifeSpanLabel" 
                            FontSize="14"
-                           TextColor="#8B7355"
+                           TextColor="Black"
                            VerticalOptions="Start"/>
 
                     <Label Grid.Row="5" Grid.Column="0" 
                            Text="↔️ Image Width:" 
                            FontAttributes="Bold"
                            FontSize="14"
-                           TextColor="#34495E"
+                           TextColor="Black"
                            VerticalOptions="Start"/>
                     <Label Grid.Row="5" Grid.Column="1" 
                            x:Name="WidthLabel" 
                            FontSize="14"
-                           TextColor="#8B7355"
+                           TextColor="Black"
                            VerticalOptions="Start"/>
 
                     <Label Grid.Row="6" Grid.Column="0" 
                            Text="↕️ Image Height:" 
                            FontAttributes="Bold"
                            FontSize="14"
-                           TextColor="#34495E"
+                           TextColor="Black"
                            VerticalOptions="Start"/>
                     <Label Grid.Row="6" Grid.Column="1" 
                            x:Name="HeightLabel" 
                            FontSize="14"
-                           TextColor="#8B7355"
+                           TextColor="Black"
                            VerticalOptions="Start"/>
 
                     <Label Grid.Row="7" Grid.Column="0" 
                            Text="💾 Local Only:" 
                            FontAttributes="Bold"
                            FontSize="14"
-                           TextColor="#34495E"
+                           TextColor="Black"
                            VerticalOptions="Start"/>
                     <Label Grid.Row="7" Grid.Column="1" 
                            x:Name="LocalOnlyLabel" 
                            FontSize="14"
-                           TextColor="#8B7355"
+                           TextColor="Black"
                            VerticalOptions="Start"/>
 
                     <Label Grid.Row="8" Grid.Column="0" 
                            Text="📅 Created:" 
                            FontAttributes="Bold"
                            FontSize="14"
-                           TextColor="#34495E"
+                           TextColor="Black"
                            VerticalOptions="Start"/>
                     <Label Grid.Row="8" Grid.Column="1" 
                            x:Name="CreatedLabel" 
                            FontSize="14"
-                           TextColor="#8B7355"
+                           TextColor="Black"
                            VerticalOptions="Start"/>
 
                 </Grid>
@@ -163,12 +163,12 @@
                     <Label Text="📝 Description:" 
                            FontAttributes="Bold" 
                            FontSize="18"
-                           TextColor="#34495E"/>
+                           TextColor="Black"/>
                     <BoxView HeightRequest="1" 
-                             BackgroundColor="#E0D5C7"
+                             BackgroundColor="#E0E0E0"
                              Margin="0,0,0,10"/>
                     <Label x:Name="DescriptionLabel" 
-                           TextColor="#8B7355" 
+                           TextColor="Black" 
                            FontSize="14"
                            LineBreakMode="WordWrap"/>
                 </VerticalStackLayout>

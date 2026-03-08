@@ -96,7 +96,6 @@ namespace CatAPIfetcher.Views
                     _imageWidth = (int)decoder.PixelWidth;
                     _imageHeight = (int)decoder.PixelHeight;
 #else
-                    // Fallback: try to read image info from file
                     using var fileStream = File.OpenRead(imagePath);
                     var info = GetImageInfo(fileStream);
                     _imageWidth = info.Width;

@@ -3,120 +3,118 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CatAPIfetcher.Views.SettingsPage"
              Title="Settings"
-             BackgroundColor="AliceBlue">
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
+             BackgroundColor="#F2F6FA">
 
-            <Label Text="⚙️ Settings" 
-                   FontSize="32" 
+    <ScrollView>
+
+        <VerticalStackLayout Padding="20" Spacing="25">
+
+            <Label Text="⚙️ Settings"
+                   FontSize="28"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
-                   TextColor="#2C3E50"
-                   Margin="0,0,0,20"/>
+                   TextColor="#1A1A1A"/>
 
-            <Frame CornerRadius="15" 
-                   Padding="20" 
-                   HasShadow="False" 
-                   BackgroundColor="White"
-                   BorderColor="Transparent">
-                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="15">
-                    <VerticalStackLayout Grid.Column="0" Spacing="5">
-                        <Label Text="💾 Show Local Cats in 'Cats' Tab" 
-                               FontSize="16" 
-                               FontAttributes="Bold"
-                               TextColor="#34495E"/>
-                        <Label Text="When enabled, locally added cats will appear in the main Cats list" 
-                               FontSize="12" 
-                               TextColor="#8B7355"
-                               LineBreakMode="WordWrap"/>
-                    </VerticalStackLayout>
-                    <Switch Grid.Column="1" 
-                            x:Name="ShowLocalCatsSwitch"
+            <Frame CornerRadius="16"
+                   Padding="20"
+                   BackgroundColor="White">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="💾 Show Local Cats"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="Black"/>
+
+                    <Label Text="When enabled, locally added cats will appear in the main Cats list."
+                           FontSize="13"
+                           TextColor="#555"
+                           LineBreakMode="WordWrap"/>
+
+                    <Switch x:Name="ShowLocalCatsSwitch"
                             IsToggled="True"
                             Toggled="OnShowLocalCatsToggled"
-                            VerticalOptions="Center"
                             OnColor="#27AE60"/>
-                </Grid>
-            </Frame>
 
-            <Frame CornerRadius="15" 
-                   Padding="20" 
-                   HasShadow="False" 
-                   BackgroundColor="White"
-                   BorderColor="Transparent">
-                <VerticalStackLayout Spacing="15">
-                    <Label Text="🎲 Cat Generator Settings" 
-                           FontSize="18" 
-                           FontAttributes="Bold"
-                           TextColor="#34495E"/>
-
-                    <BoxView HeightRequest="1" 
-                             BackgroundColor="#E0D5C7"
-                             Margin="0,0,0,10"/>
-
-                    <Label Text="Number of cats to generate:" 
-                           FontSize="14" 
-                           FontAttributes="Bold"
-                           TextColor="#34495E"/>
-
-                    <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
-                        <Button Text="-" 
-                                Clicked="OnDecreaseClicked"
-                                WidthRequest="50"
-                                HeightRequest="50"
-                                FontSize="24"
-                                BackgroundColor="#E74C3C"
-                                TextColor="White"
-                                CornerRadius="25"/>
-
-                        <Frame CornerRadius="10" 
-                               Padding="15,10" 
-                               HasShadow="False"
-                               BackgroundColor="#FFF8F0"
-                               BorderColor="Transparent">
-                            <Label x:Name="CountLabel"
-                                   Text="10"
-                                   FontSize="32"
-                                   FontAttributes="Bold"
-                                   TextColor="#2C3E50"
-                                   WidthRequest="60"
-                                   HorizontalTextAlignment="Center"/>
-                        </Frame>
-
-                        <Button Text="+" 
-                                Clicked="OnIncreaseClicked"
-                                WidthRequest="50"
-                                HeightRequest="50"
-                                FontSize="24"
-                                BackgroundColor="#27AE60"
-                                TextColor="White"
-                                CornerRadius="25"/>
-                    </HorizontalStackLayout>
-
-                    <Label Text="Range: 1-50 cats" 
-                           FontSize="12" 
-                           TextColor="#8B7355"
-                           HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Frame>
 
+
+            <Frame CornerRadius="16"
+                   Padding="20"
+                   BackgroundColor="White">
+
+                <VerticalStackLayout Spacing="18">
+
+                    <Label Text="🎲 Cat Generator"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="Black"/>
+
+                    <Label Text="Number of cats:"
+                           FontSize="14"
+                           TextColor="Black"/>
+
+                    <HorizontalStackLayout
+                        HorizontalOptions="Center"
+                        Spacing="20">
+
+                        <Button Text="-"
+                                Clicked="OnDecreaseClicked"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                FontSize="22"
+                                CornerRadius="25"
+                                BackgroundColor="#E74C3C"
+                                TextColor="White"/>
+
+                        <Label x:Name="CountLabel"
+                               Text="10"
+                               FontSize="30"
+                               FontAttributes="Bold"
+                               WidthRequest="60"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               TextColor="Black"/>
+
+                        <Button Text="+"
+                                Clicked="OnIncreaseClicked"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                FontSize="22"
+                                CornerRadius="25"
+                                BackgroundColor="#27AE60"
+                                TextColor="White"/>
+
+                    </HorizontalStackLayout>
+
+                    <Label Text="Range: 1 - 50 cats"
+                           FontSize="12"
+                           TextColor="#666"
+                           HorizontalOptions="Center"/>
+
+                </VerticalStackLayout>
+            </Frame>
+
+
             <Button Text="🔄 Generate New Cats"
                     Clicked="OnGenerateClicked"
-                    BackgroundColor="#3498DB"
-                    TextColor="White"
+                    HeightRequest="60"
                     FontSize="18"
                     FontAttributes="Bold"
-                    HeightRequest="60"
-                    CornerRadius="15"
-                    Margin="0,10,0,0"/>
+                    CornerRadius="16"
+                    BackgroundColor="#3498DB"
+                    TextColor="White"/>
 
-            <Label Text="⚠️ This will delete only API cats and generate new random cats. Your local cats will be preserved."
+
+            <Label Text="⚠️ This will delete only API cats and generate new random cats. Your local cats will remain safe."
                    FontSize="12"
-                   TextColor="#27AE60"
                    HorizontalTextAlignment="Center"
-                   LineBreakMode="WordWrap"
-                   Margin="0,0,0,20"/>
+                   TextColor="#555"
+                   LineBreakMode="WordWrap"/>
 
         </VerticalStackLayout>
+
     </ScrollView>
+
 </ContentPage>
